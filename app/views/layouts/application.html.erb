@@ -16,6 +16,9 @@
     <% if flash[:alert] %>
       <p><%= alert %></p>
     <% end %>
+    <% if current_user %>
+      <%= link_to "LOGOUT", sessions_path, method: 'delete' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

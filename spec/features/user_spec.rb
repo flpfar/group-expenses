@@ -44,7 +44,7 @@ RSpec.feature 'Users', type: :feature do
   it 'are redirected to profile page when signup is sucessfull' do
     visit new_user_path
     fill_username_and_click('user', 'random')
-    expect(page).to have_current_path(user_path(user.id))
+    expect(page).to have_current_path(user_path(User.last.id))
   end
 
   it 'signup fails when username was already taken' do

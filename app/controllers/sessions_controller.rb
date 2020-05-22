@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to user_path(current_user.id) if current_user
   end
 
   def create
@@ -12,5 +13,10 @@ class SessionsController < ApplicationController
       flash.now[:alert] = 'Login failed. Username not found'
       render :new
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
   end
 end

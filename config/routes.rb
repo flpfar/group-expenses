@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   get '/sessions/new', to: 'sessions#new', as: 'new_session'
   post '/sessions', to: 'sessions#create'
+  delete '/sessions', to: 'sessions#destroy'
 
   get '/users/new', to: 'users#new', as: 'new_user'
   post '/users', to: 'users#create'
+  get '/users/:id', to: 'users#show', as: 'user'
 
   # resources :users
 
