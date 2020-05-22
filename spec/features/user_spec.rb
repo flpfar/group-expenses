@@ -28,6 +28,13 @@ RSpec.feature 'Users', type: :feature do
     expect(page).to have_current_path(user_path(user.id))
   end
 
+  it 'root page redirects to profile when logged in' do
+    user = create(:user, username: 'random')
+    fill_username_and_click('random')
+    visit root_path
+    expect(page).to have_current_path(user_path(user.id))
+  end
+
   it 'signup successfully' do
     visit new_user_path
     fill_username_and_click('felipe')
