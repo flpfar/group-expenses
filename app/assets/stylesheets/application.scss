@@ -1,1 +1,20 @@
 @import "bootstrap";
+
+nav {
+  font-size: 0.8rem;
+  height: 2rem;
+  line-height: 2rem;
+  
+  .profile-link {
+    font-weight: 700;
+    color: #fff;
+  }
+  .signout-link {
+    color: #aaa;
+    text-decoration: underline;
+  }
+}
+
+.alert {
+  line-height: 0.8rem;
+}

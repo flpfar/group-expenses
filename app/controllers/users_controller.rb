@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def new; end
+  def new
+    redirect_to root_path if current_user
+  end
 
   def create
     user = User.new(user_params)

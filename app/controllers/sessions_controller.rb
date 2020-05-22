@@ -1,16 +1,17 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    redirect_to root_path if current_user
+  end
 
   def create
     user = User.find_by(username: params[:session][:username])
 
     if user
       session[:user_id] = user.id
-      redirect_to user_path(user.id)
     else
-      flash.now[:alert] = 'Login failed. Username not found'
-      render :new
+      flash[:alert] = 'Login failed. Username not found.'
     end
+    redirect_to root_path
   end
 
   def destroy

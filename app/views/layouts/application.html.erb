@@ -4,21 +4,30 @@
     <title>GroupExpenses</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <p><%= notice %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p><%= alert %></p>
-    <% end %>
     <% if current_user %>
-      <%= link_to "LOGOUT", sessions_path, method: 'delete' %>
+      <nav class='d-flex justify-content-end px-3 bg-dark'>
+        <%= link_to current_user.username, user_path(current_user.id), class: 'profile-link mr-3' %>
+        <%= link_to "Logout", sessions_path, method: 'delete', class: 'signout-link' %>
+      </nav>
     <% end %>
-    <%= yield %>
+    <% flash.each do |type, msg| %>
+      <div class="text-center position-absolute w-100 alert alert-<%= notice_or_alert(type) %>">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
