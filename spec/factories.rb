@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :expense do
+    
+  end
+
   factory :group do
     name { "MyString" }
     icon { "MyString" }
