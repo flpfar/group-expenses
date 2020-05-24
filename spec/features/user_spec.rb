@@ -14,7 +14,7 @@ RSpec.feature 'Users', type: :feature do
   it 'login successfully' do
     create(:user, username: 'random')
     fill_username_and_click('session', 'random')
-    expect(page).to have_content('Welcome')
+    expect(page).to have_content('random')
   end
 
   it 'login fails when user is not signed up' do
@@ -38,7 +38,7 @@ RSpec.feature 'Users', type: :feature do
   it 'signup successfully' do
     visit new_user_path
     fill_username_and_click('user', 'felipe')
-    expect(page).to have_content('Welcome')
+    expect(page).to have_content('felipe')
   end
 
   it 'are redirected to profile page when signup is sucessfull' do
