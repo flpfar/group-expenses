@@ -1,12 +1,20 @@
-<main class="user-expenses py-5">
-
-  <ul>
+<main class="user-expenses pt-5">
+  <% @current_page = '> All my expenses' %>
+  <span class="total">Total: $<%= @expenses.sum(:amount) %></span>
+  <ul class="expenses-list d-flex flex-column p-0">
     <% @expenses.each do |expense| %>
-      <li>
-        <%= expense.name %>
-        <%= expense.amount %>
+      <li class="card m-1">
+        <div class="card-body p-1 d-flex flex-row">
+          <%=image_tag "logo.png", alt: current_user.username, class: "group-icon"%>
+          <div class="name-date">
+            <span class="name"><%= expense.name %></span>
+            <span class="date"><%= expense.created_at.strftime("%m/%d/%Y") %></span>
+          </div>
+          <span class="amount">$<%= expense.amount %></span>
+        </div>
       </li>
     <% end %>
   </ul>
-  <%= link_to 'New expense', new_user_expense_path(current_user.id) %>
+  <%= link_to 'Add expense', new_user_expense_path(current_user.id), class: 'new-btn' %>
+  <% @footer = false %>
 </main>
