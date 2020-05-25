@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
 
   get '/users/:id/expenses', to: 'expenses#index', as: 'user_expenses'
+  get '/users/:id/expenses/new', to: 'expenses#new', as: 'new_user_expense'
+
+  post '/expenses', to: 'expenses#create'
   # resources :users
 
   # get '/friendships/:id', to: 'friendships#create', as: 'new_friendship'

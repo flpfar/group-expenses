@@ -1,0 +1,13 @@
+<main class="new-expense py-5">
+
+  <div class="form-container border border-light p-3">
+  <p class="h5 mb-3">New expense</p>
+  <%= form_with model: @expense, class: 'text-center' do |f| %>
+    <%= f.text_field :name, placeholder: 'Expense name', class: 'form-control' %><br>
+    <%= f.number_field :amount, step: :any, placeholder: 'Value', class: 'form-control' %><br>
+    <%= f.select :group, [['No group', -1], ['Group 1', 0], ['Group 2', 1]] %>
+    <%= f.submit 'Create Expense', class: 'btn btn-info btn-block mb-2' %>
+  <% end %>
+  </div>
+
+</main>

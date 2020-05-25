@@ -1,0 +1,12 @@
+<main class="user-expenses py-5">
+
+  <ul>
+    <% @expenses.each do |expense| %>
+      <li>
+        <%= expense.name %>
+        <%= expense.amount %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'New expense', new_user_expense_path(current_user.id) %>
+</main>

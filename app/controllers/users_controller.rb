@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: %i[show]
+
   def new
     redirect_to root_path if current_user
   end
