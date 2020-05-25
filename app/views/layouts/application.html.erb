@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8e996abce9.js"></script>
   </head>
 
   <body class="d-flex flex-column min-vh-100">
     <% if current_user %>
       <nav class='d-flex justify-content-end px-3 bg-dark'>
-        <%= link_to current_user.username, user_path(current_user.id), class: 'profile-link mr-3' %>
+        <%= link_to '<i class="fas fa-home"></i>'.html_safe, root_path, class: 'home-link' %>
+        <span class='current-page mr-auto ml-1'><%= @current_page %></span>
+        <%= link_to current_user.username, user_path(current_user.id), class: 'profile-link mr-2' %>
         <%= link_to "Logout", sessions_path, method: 'delete', class: 'signout-link' %>
       </nav>
     <% end %>
@@ -24,14 +27,18 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center position-static">
           <%= yield %>
         </div>
       </div>
     </div>
+
+    <% unless @footer == false %>
+    
     <footer class="footer bg-light border text-center mt-auto">
       <span>Copyright &copy; 2020</span>
     </footer>
+    <% end %>
 
     <script type="text/javascript">
       $(document).ready(function(){
