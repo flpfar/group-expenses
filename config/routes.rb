@@ -10,6 +10,12 @@
 #                     users POST   /users(.:format)                                                                         users#create
 #                      user GET    /users/:id(.:format)                                                                     users#show
 #             user_expenses GET    /users/:id/expenses(.:format)                                                            expenses#index
+#          new_user_expense GET    /users/:id/expenses/new(.:format)                                                        expenses#new
+#                  expenses POST   /expenses(.:format)                                                                      expenses#create
+#                    groups GET    /groups(.:format)                                                                        groups#index
+#                           POST   /groups(.:format)                                                                        groups#create
+#                 new_group GET    /groups/new(.:format)                                                                    groups#new
+#                     group GET    /groups/:id(.:format)                                                                    groups#show
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -38,13 +44,5 @@ Rails.application.routes.draw do
   get '/users/:id/expenses/new', to: 'expenses#new', as: 'new_user_expense'
   post '/expenses', to: 'expenses#create'
 
-  get '/users/:id/groups', to: 'groups#index', as: 'user_groups'
-  get '/users/:id/groups/new', to: 'groups#new', as: 'new_user_group'
-  post '/groups', to: 'groups#create'
-
-  # resources :users
-
-  # get '/friendships/:id', to: 'friendships#create', as: 'new_friendship'
-  # put '/friendships/:id', to: 'friendships#update', as: 'friendship'
-
+  resources :groups, only: %i[index new create show]
 end
