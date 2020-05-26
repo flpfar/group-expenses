@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    return if session[:user_id] == params[:id].to_i
+    return if session[:user_id] == params[:id].to_i || params[:group_id]
 
     flash[:alert] = 'You are not authorized to access this page'
     redirect_to root_path

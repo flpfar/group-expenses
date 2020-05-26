@@ -44,5 +44,6 @@ Rails.application.routes.draw do
   get '/users/:id/expenses/new', to: 'expenses#new', as: 'new_user_expense'
   post '/expenses', to: 'expenses#create'
 
-  resources :groups, only: %i[index new create show]
+  resources :groups, only: %i[index new create]
+  get '/group/:group_id/expenses', to: 'expenses#index', as: 'group'
 end

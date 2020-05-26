@@ -1,5 +1,5 @@
 <main class="user-expenses pt-5">
-  <% @current_page = '> All my expenses' %>
+  <% @current_page = "> #{@title}" %>
   <span class="total">Total: <%= number_to_currency(@expenses.sum(:amount)) %></span>
   <ul class="expenses-list simple-list d-flex flex-column p-0">
     <% @expenses.each do |expense| %>

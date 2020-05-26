@@ -2,7 +2,17 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user, only: %i[index new]
 
   def index
-    @expenses = params[:external] == 'true' ? current_user.external_expenses : current_user.expenses
+    # @expenses = params[:external] == 'true' ? current_user.external_expenses : current_user.expenses
+    if params[:external] == 'true'
+      @expenses = current_user.external_expenses
+      @title = 'All my external expenses'
+    elsif params[:group] == 'true'
+      @expenses = Group.find(params[:group_id]).expenses
+      @title = 'Group expenses'
+    else
+      @expenses = current_user.expenses
+      @title = 'All my expenses'
+    end
   end
 
   def new

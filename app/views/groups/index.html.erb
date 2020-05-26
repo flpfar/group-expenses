@@ -1,16 +1,18 @@
 <main class="user-groups pt-5">
-  <% @current_page = '> All my groups' %>
+  <% @current_page = '> All groups' %>
   <ul class="groups-list simple-list d-flex flex-column p-0">
     <% @groups.each do |group| %>
-      <li class="card m-1">
-        <div class="card-body p-1 d-flex flex-row">
-          <%=image_tag "logo.png", alt: current_user.username, class: "group-icon"%>
-          <div class="name-date">
-            <span class="name"><%= group.name %></span>
-            <span class="date"><%= group.created_at.strftime("%m/%d/%Y") %></span>
+      <%= link_to group_path(group.id, group: true), class: 'group-link' do %>
+        <li class="card m-1">
+          <div class="card-body p-1 d-flex flex-row">
+            <%=image_tag "logo.png", alt: current_user.username, class: "group-icon"%>
+            <div class="name-date">
+              <span class="name"><%= group.name %></span>
+              <span class="date">Since: <%= group.created_at.strftime("%m/%d/%Y") %></span>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
   <%= link_to 'Add group', new_group_path, class: 'new-btn' %>
