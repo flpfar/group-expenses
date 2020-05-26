@@ -1,6 +1,6 @@
 <main class="user-expenses pt-5">
   <% @current_page = '> All my expenses' %>
-  <span class="total">Total: $<%= @expenses.sum(:amount) %></span>
+  <span class="total">Total: <%= number_to_currency(@expenses.sum(:amount)) %></span>
   <ul class="expenses-list d-flex flex-column p-0">
     <% @expenses.each do |expense| %>
       <li class="card m-1">
@@ -10,7 +10,7 @@
             <span class="name"><%= expense.name %></span>
             <span class="date"><%= expense.created_at.strftime("%m/%d/%Y") %></span>
           </div>
-          <span class="amount">$<%= expense.amount %></span>
+          <span class="amount"><%= number_to_currency(expense.amount) %></span>
         </div>
       </li>
     <% end %>

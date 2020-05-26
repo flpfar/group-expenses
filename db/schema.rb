@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_022752) do
 
   create_table "expenses", force: :cascade do |t|
     t.string "name", null: false
-    t.decimal "amount", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
