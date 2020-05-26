@@ -20,6 +20,6 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'Add expense', new_user_expense_path(current_user.id), class: 'new-btn' %>
+  <%= add_expense_button(@type, @group_id) %>
   <% @footer = false %>
 </main>

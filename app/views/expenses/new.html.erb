@@ -10,7 +10,8 @@
     </ul>
     <%= f.text_field :name, placeholder: 'Expense name', class: 'form-control' %><br>
     <%= f.number_field :amount, step: :any, placeholder: 'Value', class: 'form-control' %><br>
-    <%= f.select :group, [['No group', -1], ['Group 1', 0], ['Group 2', 1]] %>
+    <%= show_select_group(f, @group_id, @groups) %>
+    <%=  %>
     <%= f.submit 'Create Expense', class: 'btn btn-info btn-block mb-2' %>
   <% end %>
   </div>
