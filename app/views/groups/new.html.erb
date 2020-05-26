@@ -1,0 +1,11 @@
+<main class="new-group py-5">
+
+  <div class="form-group text-left border border-light p-3">
+  <p class="h5 mb-3">New group</p>
+  <%= form_with model: @group do |f| %>
+    <%= f.text_field :name, placeholder: 'Group name*', class: 'form-control', required: true %><br>
+    <%= f.text_field :icon, placeholder: 'Group icon image URL', class: 'form-control' %>
+    <%= f.submit 'Create Group', class: 'btn btn-info btn-block mb-2 mt-4' %>
+  <% end %>
+  </div>
+</main>

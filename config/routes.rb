@@ -36,8 +36,12 @@ Rails.application.routes.draw do
 
   get '/users/:id/expenses', to: 'expenses#index', as: 'user_expenses'
   get '/users/:id/expenses/new', to: 'expenses#new', as: 'new_user_expense'
-
   post '/expenses', to: 'expenses#create'
+
+  get '/users/:id/groups', to: 'groups#index', as: 'user_groups'
+  get '/users/:id/groups/new', to: 'groups#new', as: 'new_user_group'
+  post '/groups', to: 'groups#create'
+
   # resources :users
 
   # get '/friendships/:id', to: 'friendships#create', as: 'new_friendship'
