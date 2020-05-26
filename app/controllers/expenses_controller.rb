@@ -5,13 +5,13 @@ class ExpensesController < ApplicationController
     # @expenses = params[:external] == 'true' ? current_user.external_expenses : current_user.expenses
     if params[:external] == 'true'
       @expenses = current_user.external_expenses
-      @title = 'All my external expenses'
+      @type = :external
     elsif params[:group] == 'true'
       @expenses = Group.find(params[:group_id]).expenses
-      @title = 'Group expenses'
+      @type = :group
     else
       @expenses = current_user.expenses
-      @title = 'All my expenses'
+      @type = :all
     end
   end
 

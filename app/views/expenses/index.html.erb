@@ -1,5 +1,5 @@
 <main class="user-expenses pt-5">
-  <% @current_page = "> #{@title}" %>
+  <% @current_page = "> #{index_title(@type)}" %>
   <span class="total">Total: <%= number_to_currency(@expenses.sum(:amount)) %></span>
   <ul class="expenses-list simple-list d-flex flex-column p-0">
     <% @expenses.each do |expense| %>
@@ -8,7 +8,12 @@
           <%=image_tag "logo.png", alt: current_user.username, class: "group-icon"%>
           <div class="name-date">
             <span class="name"><%= expense.name %></span>
-            <span class="date"><%= expense.created_at.strftime("%m/%d/%Y") %></span>
+            <div class="date-author">
+              <span class="date"><%= expense.created_at.strftime("%m/%d/%Y") %></span>
+              <% if @type == :group %>
+                <span class="author"> by <%= expense.author.username %></span>
+              <% end %>
+            </div>
           </div>
           <span class="amount"><%= number_to_currency(expense.amount) %></span>
         </div>
