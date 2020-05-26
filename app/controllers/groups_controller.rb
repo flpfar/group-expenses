@@ -12,6 +12,19 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.new(group_params)
+    if @group.save
+      flash[:notice] = 'Group was successfully created.'
+      redirect_to groups_path
+    else
+      flash.now[:alert] = 'Group could not be created.'
+      render :new
+    end
+  end
 
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :icon)
   end
 end

@@ -1,8 +1,13 @@
 <main class="new-expense py-5">
 
-  <div class="form-container border border-light p-3">
+  <div class="form-container text-left border border-light p-3">
   <p class="h5 mb-3">New expense</p>
-  <%= form_with model: @expense, class: 'text-center' do |f| %>
+  <%= form_with model: @expense, local: true do |f| %>
+    <ul class="list-unstyled text-danger">
+      <% @expense.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
     <%= f.text_field :name, placeholder: 'Expense name', class: 'form-control' %><br>
     <%= f.number_field :amount, step: :any, placeholder: 'Value', class: 'form-control' %><br>
     <%= f.select :group, [['No group', -1], ['Group 1', 0], ['Group 2', 1]] %>

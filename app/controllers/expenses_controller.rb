@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
       flash[:notice] = 'Expense was successfully created.'
       redirect_to user_expenses_path(current_user.id)
     else
-      flash[:alert].now = 'Failed to create expense.'
+      flash.now[:alert] = 'Failed to create expense.'
       render :new
     end
   end
