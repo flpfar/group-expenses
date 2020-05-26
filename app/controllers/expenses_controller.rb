@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user, only: %i[index new]
 
   def index
-    @expenses = current_user.expenses
+    @expenses = params[:external] == 'true' ? current_user.external_expenses : current_user.expenses
   end
 
   def new

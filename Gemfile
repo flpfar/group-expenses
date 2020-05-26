@@ -33,6 +33,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'erd'
+  gem 'hirb', '~> 0.7.3'
   gem 'annotate', '~> 3.1', '>= 3.1.1'
 end
 
