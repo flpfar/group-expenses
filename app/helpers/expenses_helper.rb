@@ -14,6 +14,16 @@ module ExpensesHelper
     link_to 'Add expense', new_user_expense_path(current_user.id, type: type.to_s, group_id: group_id), class: 'new-btn'
   end
 
+  def image_url_chooser(type, expense, group_id)
+    url = if type == :group
+            Group.find(group_id).icon
+          elsif expense.groups.first
+            expense.groups.first.icon
+          else
+            'https://cdn4.iconfinder.com/data/icons/stop-virus-outline-iconset/128/ic_gathering-512.png'
+          end
+  end
+
   def show_select_group(form, group_id, groups)
     return form.hidden_field :group, value: group_id unless group_id.zero?
 

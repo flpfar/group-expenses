@@ -5,7 +5,7 @@
       <%= link_to group_path(group.id, group: true), class: 'group-link' do %>
         <li class="card m-1">
           <div class="card-body p-1 d-flex flex-row">
-            <%=image_tag "logo.png", alt: current_user.username, class: "group-icon"%>
+            <%=image_tag group.icon, alt: group.name, class: "group-icon"%>
             <div class="name-date">
               <span class="name"><%= group.name %></span>
               <span class="date">Since: <%= group.created_at.strftime("%m/%d/%Y") %></span>
