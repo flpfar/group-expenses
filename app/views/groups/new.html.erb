@@ -1,0 +1,16 @@
+<main class="new-group py-5">
+  <% @current_page = '> New group' %>
+  <div class="form-group text-left border border-light p-3">
+  <p class="h5 mb-3">New group</p>
+  <%= form_with model: @group, local: true do |f| %>
+    <ul class="list-unstyled text-danger">
+      <% @group.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <%= f.text_field :name, placeholder: 'Group name*', class: 'form-control', required: true %><br>
+    <%= f.text_field :icon, placeholder: 'Group icon image URL', class: 'form-control' %>
+    <%= f.submit 'Create Group', class: 'btn btn-info btn-block mb-2 mt-4' %>
+  <% end %>
+  </div>
+</main>

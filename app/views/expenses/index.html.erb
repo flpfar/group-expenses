@@ -1,0 +1,25 @@
+<main class="user-expenses pt-5">
+  <% @current_page = "> #{index_title(@type)}" %>
+  <span class="total">Total: <%= number_to_currency(@expenses.sum(:amount)) %></span>
+  <ul class="expenses-list simple-list d-flex flex-column p-0">
+    <% @expenses.each do |expense| %>
+      <li class="card m-1">
+        <div class="card-body p-1 d-flex flex-row">
+          <%=image_tag image_url_chooser(@type, expense, @group_id), alt: current_user.username, class: "group-icon"%>
+          <div class="name-date">
+            <span class="name"><%= expense.name %></span>
+            <div class="date-author">
+              <span class="date"><%= expense.created_at.strftime("%m/%d/%Y") %></span>
+              <% if @type == :group %>
+                <span class="author"> by <%= expense.author.username %></span>
+              <% end %>
+            </div>
+          </div>
+          <span class="amount"><%= number_to_currency(expense.amount) %></span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= add_expense_button(@type, @group_id) %>
+  <% @footer = false %>
+</main>

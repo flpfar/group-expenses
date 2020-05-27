@@ -1,0 +1,13 @@
+<main class="login py-5">
+
+  <%=image_tag "logo.png", alt: "Example Image", class: "logo-image"%>
+  <div class="form-container border border-light p-3">
+  <p class="h5 mb-3">Login</p>
+  <%= form_for :session, url: sessions_path, html: { class: 'text-center' } do |f| %>
+    <%= f.text_field :username, placeholder: 'Username', class: 'form-control' %><br>
+    <%= f.submit 'Login', class: 'btn btn-info btn-block mb-2' %>
+  <% end %>
+  <%= link_to  "Sign Up", new_user_path %>
+  </div>
+
+</main>
