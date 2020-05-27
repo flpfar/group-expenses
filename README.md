@@ -46,7 +46,7 @@ $ rails server
 
 ## Authors
 
-👤 **Felipe Rosa**
+👤 **Felipe Augusto Rosa**
 
 - Github: [@flpfar](https://github.com/flpfar)
 - Twitter: [@flpfar](https://twitter.com/flpfar)
@@ -59,10 +59,6 @@ Contributions, issues and feature requests are welcome!. Feel free to check the 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-This project is based on a [Microverse scaffold](https://github.com/microverseinc/ror-social-scaffold).
 
 ## 📝 License
 
