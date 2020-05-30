@@ -10,7 +10,9 @@
 #
 class Group < ApplicationRecord
   has_and_belongs_to_many :expenses
-  before_destroy { expenses.clear }
+  before_destroy do
+    expenses.each(&:destroy)
+  end
 
   validates :name, presence: true, uniqueness: true
 end
